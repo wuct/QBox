@@ -12,7 +12,7 @@ var gulp = require('gulp')
 , less = require('gulp-less')
 ;
 
-var distDir = './dist/'
+var distDir = './public/'
 , tempDir = './temp/'
 , jsSrc = './src/app/**/*.js'
 , jsDest = distDir + 'scripts'
@@ -45,8 +45,7 @@ gulp.task('scripts', ['scripts:vendor', 'scripts:templates'], function() {
 gulp.task('scripts:templates', function() {
   return gulp.src(tplSrc)
     .pipe(templateCache('templates.js', {
-      module: 'cpTemplates',
-      root: '/app/',
+      module: 'templates',
       standalone: true
     }))
     .pipe(gulp.dest(tempDir));
@@ -58,6 +57,8 @@ gulp.task('scripts:vendor', function() {
     // "bower_components/jquery/dist/jquery.js",
     // "bower_components/lodash/dist/lodash.js",
     "bower_components/angular/angular.js",
+    "bower_components/angular-ui-router/release/angular-ui-router.js",
+    "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
     // "bower_components/angular-animate/angular-animate.js",
     // "bower_components/angular-sanitize/angular-sanitize.js",
     // "bower_components/angular-resource/angular-resource.js",
@@ -68,7 +69,6 @@ gulp.task('scripts:vendor', function() {
     // "bower_components/angular-markdown-directive/markdown.js",
     // "bower_components/ngstorage/ngStorage.js",
     // "bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js",
-    // "bower_components/angular-ui-router/release/angular-ui-router.js",
     // "bower_components/uservoice-trigger-directive/uservoice-trigger-directive.js",
     // "src/vendor/smartbanner.js",
     // "src/vendor/bootstrap.min.js",
