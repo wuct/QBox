@@ -12,6 +12,7 @@ var gulp = require('gulp')
 , rimraf = require('gulp-rimraf')
 , less = require('gulp-less')
 , minifyCSS = require('gulp-minify-css')
+, s3 = require("gulp-s3")
 ;
 
 var distDir = './public/'
@@ -46,6 +47,17 @@ gulp.task('compress', ['scripts', 'styles'], function () {
     .pipe(gulp.dest(jsDest))
     .pipe(notify({ message: 'Compress scripts task complete' }));
 });
+
+gulp.task('s3', function() {
+  return gulp.src('./public/**')
+  .pipe(s3({
+    "key": process.env.AWS_S3_CDN_KEY,
+    "secret": process.env.AWS_S3_CDN_SECRET,
+    "bucket": "q-box.co",
+    "region": "ap-northeast-1"
+  }));
+});
+
 
 // Scripts
 
