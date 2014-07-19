@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <meta charset="utf-8" />
+    <meta content-language='zh-TW' />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Qbox 提供方便、可靠的物流方案，我們的演算法可幫您節省運費達 60%。">
+    <meta name="keywords" content="Qbox, 快遞, 物流" />
+    <meta name="author" content="Qbox" />
+    <meta property="og:title" content="Qbox"/> 
+    <meta property="og:type" content="website"/> 
+    <meta property="og:image" content="/images/Qbox.png"/> 
+    <meta property="og:site_name" content="Qbox"/> 
+    <meta property="og:description" content="Qbox 提供方便、可靠的物流方案，我們的演算法可幫您節省運費達 60%。"/>
+
+    <link rel="icon" href="favicon.ico">
 
     <title>Qbox</title>
+
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css" />
     <script src="scripts/vendor.js"></script>
@@ -20,16 +30,13 @@
   <body ng-app="app" ng-controller="layoutCtrl">
     <div class="ui page grid">
       <div class="column">
-        <div class="ui secondary pointing menu">
-          <a class="item" ui-sref="hello">
-            <i class="fa fa-cube style"></i>
+        <div class="ui secondary pointing header menu">
+          <a class="logo item" ui-sref="hello">
             Qbox
           </a>
-          <div class="right menu">
-            <a class="item" ui-sref-active="active" ui-sref="hello">您好</a>
-            <a class="item" ui-sref-active="active" ui-sref="agent">物流夥伴</a>
-            <a class="item" ui-sref-active="active" ui-sref="about">關於</a>
-          </div>
+          <a class="item" ui-sref-active="active" ui-sref="hello">您好</a>
+          <a class="item" ui-sref-active="active" ui-sref="agent">物流夥伴</a>
+          <a class="item" ui-sref-active="active" ui-sref="about">關於</a>
         </div>
       </div>
     </div>
