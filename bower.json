@@ -18,6 +18,9 @@
     "angular-bootstrap": "~0.11.0",
     "angular-ui-router": "~0.2.10",
     "semantic": "*",
-    "angular-sanitize": "~1.2.20"
+    "angular-sanitize": "~1.2.20",
+    "firebase": "~1.0.17",
+    "firebase-simple-login": "~1.6.2",
+    "angularfire": "~0.7.1"
   }
 }

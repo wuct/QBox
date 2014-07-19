@@ -5,11 +5,13 @@
 
 var gulp = require('gulp')
 , concat = require('gulp-concat')
+, uglify = require('gulp-uglify')
 , notify = require('gulp-notify')
 , livereload = require('gulp-livereload')
 , templateCache = require('gulp-angular-templatecache')
 , rimraf = require('gulp-rimraf')
 , less = require('gulp-less')
+, minifyCSS = require('gulp-minify-css')
 ;
 
 var distDir = './public/'
@@ -18,20 +20,32 @@ var distDir = './public/'
 , jsDest = distDir + 'scripts'
 , cssSrc = './src/less/**/*.less'
 , cssDest = distDir + 'css'
+, imgDest = distDir + 'images'
 , tplSrc = './src/app/**/*.html'
 ;
 
 
 gulp.task('default', ['clean'], function() {
-  return gulp.start('scripts', 'styles', 'htmls');
+  return gulp.start('scripts', 'styles', 'htmls', 'images');
 });
 
 gulp.task('clean', function() {
   return gulp.src([distDir, tempDir], {read: false})
   .pipe(rimraf())
   .pipe(notify({ message: 'Clean task complete' }));
-})
+});
 
+gulp.task('compress', ['scripts', 'styles'], function () {
+  gulp.src(cssDest +'/*.css')
+    .pipe(minifyCSS())
+    .pipe(gulp.dest(cssDest))
+    .pipe(notify({ message: 'Compress styles task complete' }));
+
+  gulp.src(jsDest + '/*.js')
+    .pipe(uglify({mangle: false}))
+    .pipe(gulp.dest(jsDest))
+    .pipe(notify({ message: 'Compress scripts task complete' }));
+});
 
 // Scripts
 
@@ -54,28 +68,13 @@ gulp.task('scripts:templates', function() {
 gulp.task('scripts:vendor', function() {
   return gulp.src([
     // order matter
-    // "bower_components/jquery/dist/jquery.js",
-    // "bower_components/lodash/dist/lodash.js",
     "bower_components/angular/angular.js",
     "bower_components/angular-ui-router/release/angular-ui-router.js",
-    // "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
-    // "bower_components/angular-animate/angular-animate.js",
     "bower_components/angular-sanitize/angular-sanitize.js",
-    // "bower_components/angular-resource/angular-resource.js",
-    // "bower_components/angular-i18n/angular-locale_zh-tw.js",
-    // "bower_components/angular-ui-utils/modules/keypress/keypress.js",
-    // "bower_components/danialfarid-angular-file-upload/dist/angular-file-upload.js",
-    // "bower_components/showdown/compressed/showdown.js",
-    // "bower_components/angular-markdown-directive/markdown.js",
-    // "bower_components/ngstorage/ngStorage.js",
-    // "bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js",
-    // "bower_components/uservoice-trigger-directive/uservoice-trigger-directive.js",
+    "bower_components/firebase/firebase.js",
+    "bower_components/firebase-simple-login/firebase-simple-login.js",
+    "bower_components/angularfire/angularfire.js",
     "src/vendor/angularify.semantic.dropdown.js",
-    // "src/vendor/bootstrap.min.js",
-    // "src/vendor/async.js",
-    // "src/vendor/socket.js",
-    // "src/vendor/ui-bootstrap-tpls-0.6.0.js",
-    // "src/vendor/angular-google-maps.js",
   ])
   .pipe(concat('vendor.js'))
   .pipe(gulp.dest(jsDest));
@@ -104,6 +103,21 @@ gulp.task('htmls', function() {
     .pipe(notify({ message: 'Htmls task complete' }));
 });
 
+// Image
+gulp.task('images', function() {
+  gulp.src('./src/*.ico')
+  .pipe(gulp.dest(distDir))
+  .pipe(notify({ message: 'ico task complete' }));
+
+  return gulp.src([
+      './bower_components/semantic/build/packaged/images/*.gif',
+      './src/images/*.png',
+      ])
+    .pipe(gulp.dest(imgDest))
+    .pipe(notify({ message: 'Images task complete' }));
+});
+
+// Watch
 gulp.task('watch', function() {
   gulp.watch(cssSrc, ['styles']);
   gulp.watch([jsSrc, './src/vendor/**.js'], ['scripts']);
