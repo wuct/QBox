@@ -1,5 +1,81 @@
 // app.less
 // wuct @ 2014.7.14
 
-@import 'bootstrap';
-@import 'cover';
+// import smamtic
+@import 'menu';
+@import 'segment';
+@import 'grid';
+@import 'button';
+@import 'header';
+@import 'label';
+@import 'input';
+@import 'divider';
+@import 'dropdown';
+@import 'form';
+@import 'message';
+@import 'list';
+
+body {
+	margin-right: 0;
+	margin-left: 0;
+	font-family: "Helvetica Neue","Microsoft Jhenghei","微軟正黑體", Helvetica, Arial, Geneva, sans-serif, "SimHei";
+	h1, h2, h3, h4, h5, h6, .ui.header {
+		font-weight: normal;
+	}
+}
+p {
+	color: #888888;
+}
+.text-center {
+	text-align: center;
+}
+
+.fa.fa-bolt.fa-3x {
+	color: #BEBEBE;
+}
+.marketingWrap {
+	i.style {
+		color: #6ECFF5;
+		text-shadow: 4px 3px 0px #FFFFFF, 9px 8px 0px #28B5EC;
+		&.big{
+			font-size: 8rem;
+		}
+	}
+	.bigMargin {
+		&.grid {
+			margin: 3rem 0;
+		}
+		&.horizontal.divider {
+			margin: 3rem 0;
+		}
+	}
+	.equal.height.row {
+		.column {
+			padding: 2rem;
+		}
+		.color.aligned.column {
+			&.right {
+				background-color: #BDBDBD;
+			}
+			&.left {
+				background-color: #8A8A8A;
+			}
+			.ui.header, p {
+				color: #fff;
+			}
+		}
+	}
+}
+p {
+	font-size: 20px;
+	line-height: 1.75rem;
+	@media only screen and (max-width: 900px) {
+		&.breakLine > br {
+			display: none;
+		}
+	}
+}
+.dropdown .fa.fa-caret-down {
+	color: #777;
+	margin-left: 0.5rem;
+}

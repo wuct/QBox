@@ -8,44 +8,38 @@
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
 
-    <title>Shipsoon</title>
+    <title>Qbox</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css" />
     <script src="scripts/vendor.js"></script>
+    <script src="//cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+    <script src="//cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js"></script>
+    <script src="//cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
   </head>
 
-  <body  ng-app="app" ng-controller="layoutCtrl">
-
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Shipsoon</h3>
-              <ul class="nav masthead-nav">
-                <li ui-sref-active="active"><a ui-sref="hello">哈囉</a></li>
-                <li ui-sref-active="active"><a ui-sref="agent">加盟</a></li>
-                <li ui-sref-active="active"><a ui-sref="about">關於</a></li>
-              </ul>
-            </div>
+  <body ng-app="app" ng-controller="layoutCtrl">
+    <div class="ui page grid">
+      <div class="column">
+        <div class="ui secondary pointing menu">
+          <a class="item" ui-sref="hello">
+            <i class="fa fa-cube style"></i>
+            Qbox
+          </a>
+          <div class="right menu">
+            <a class="item" ui-sref-active="active" ui-sref="hello">您好</a>
+            <a class="item" ui-sref-active="active" ui-sref="agent">物流夥伴</a>
+            <a class="item" ui-sref-active="active" ui-sref="about">關於</a>
           </div>
-
-          <div class="inner cover">
-          	<div ui-view></div>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p> © Shipsoon</p>
-            </div>
-          </div>
-
         </div>
-
       </div>
+    </div>
+    
+    <div ui-view></div>
 
+    <div class="ui page grid">
+      <div class="center aligned column">
+        <p> © Qbox</p>
+      </div>
     </div>
 
     <script src="scripts/main.js"></script>

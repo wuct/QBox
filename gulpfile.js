@@ -58,9 +58,9 @@ gulp.task('scripts:vendor', function() {
     // "bower_components/lodash/dist/lodash.js",
     "bower_components/angular/angular.js",
     "bower_components/angular-ui-router/release/angular-ui-router.js",
-    "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+    // "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
     // "bower_components/angular-animate/angular-animate.js",
-    // "bower_components/angular-sanitize/angular-sanitize.js",
+    "bower_components/angular-sanitize/angular-sanitize.js",
     // "bower_components/angular-resource/angular-resource.js",
     // "bower_components/angular-i18n/angular-locale_zh-tw.js",
     // "bower_components/angular-ui-utils/modules/keypress/keypress.js",
@@ -70,7 +70,7 @@ gulp.task('scripts:vendor', function() {
     // "bower_components/ngstorage/ngStorage.js",
     // "bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js",
     // "bower_components/uservoice-trigger-directive/uservoice-trigger-directive.js",
-    // "src/vendor/smartbanner.js",
+    "src/vendor/angularify.semantic.dropdown.js",
     // "src/vendor/bootstrap.min.js",
     // "src/vendor/async.js",
     // "src/vendor/socket.js",
@@ -87,7 +87,10 @@ gulp.task('styles', function() {
   return gulp.src('./src/less/app.less')
     .pipe(less({
       paths  : [
-        "bower_components/bootstrap/less/",
+        "./bower_components/semantic/build/less/collections/",
+        "./bower_components/semantic/build/less/elements/",
+        "./bower_components/semantic/build/less/modules/",
+        "./bower_components/semantic/build/less/views/",
       ]
     }))
     .pipe(gulp.dest(cssDest))
@@ -103,7 +106,7 @@ gulp.task('htmls', function() {
 
 gulp.task('watch', function() {
   gulp.watch(cssSrc, ['styles']);
-  gulp.watch(jsSrc, ['scripts']);
+  gulp.watch([jsSrc, './src/vendor/**.js'], ['scripts']);
   gulp.watch(tplSrc, ['scripts']);
   gulp.watch('./src/index.html', ['htmls']);
 

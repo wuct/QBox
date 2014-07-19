@@ -1,0 +1,57 @@
+<h3 class="ui center aligned disabled header"
+  style="margin-bottom:30px;">取得獨家 App 下載邀請</h3>
+
+<div success-message
+   ng-show="'success' === formCtrl.state"></div>
+
+
+<div class="ui form" ng-form name="customerForm"
+  ng-hide="'success' === formCtrl.state"
+  ng-class="{'loading': 'updating' === formCtrl.state }">
+  <div class="field"
+    ng-class="{'error': customerForm.email.$dirty && customerForm.email.$invalid}">
+    <label>*Email</label>
+    <div class="ui input">
+      <input type="email" ng-model="data.email" name="email" required>
+      <div ng-show="customerForm.email.$dirty && customerForm.email.$invalid"
+        class="ui red pointing above ui label">請輸入 email</div>
+    </div>
+  </div>
+  <div class="field"
+    ng-class="{'error': customerForm.zip.$dirty && customerForm.zip.$invalid}">
+    <label>*郵遞區號</label>
+    <div class="ui input">
+      <input type="text" ng-model="data.zip" name="zip" required>
+      <div ng-show="customerForm.zip.$dirty && customerForm.zip.$invalid"
+        class="ui red pointing above ui label">請輸入郵遞區號</div>
+    </div>
+  </div>
+  <div class="field"
+    ng-class="{'error': customerForm.phone.$dirty && customerForm.phone.$invalid}">
+    <label>*手機號碼</label>
+    <div class="ui input">
+      <input type="text" ng-model="data.phone" name="phone" required>
+      <div ng-show="customerForm.phone.$dirty && customerForm.phone.$invalid"
+        class="ui red pointing above ui label">請輸入手機號碼</div>
+    </div>
+  </div>
+  <!-- <div class="field">
+    <label>*您的包裹類型</label>
+    <dropdown class="dropdown" ng-model="data.boxType" open="false" required>
+      <dropdown-group>大</dropdown-group>
+      <dropdown-group>中</dropdown-group>
+      <dropdown-group>小</dropdown-group>
+    </dropdown>
+  </div> -->
+  <div class="field">
+    <label>留言（選填）</label>
+    <textarea ng-model="data.note"></textarea>
+  </div>
+  <div class="field text-center">
+    <div class="ui blue button"
+      ng-click="submit(data, customerForm)">送出</div>
+  </div>
+</div><!--  END: ui form -->
+
+
+<div error-message ng-show="'error' === formCtrl.state"></div>

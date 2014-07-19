@@ -1,0 +1,57 @@
+<h3 class="ui center aligned disabled header"
+  style="margin-bottom:30px;">現在就填寫申請表，我們會儘速聯繫您。</h3>
+
+<div success-message
+   ng-show="'success' === formCtrl.state"></div>
+
+<div class="ui form" ng-form name="agentForm"
+  ng-hide="'success' === formCtrl.state"
+  ng-class="{'loading': 'updating' === formCtrl.state }">
+  <div class="field"
+    ng-class="{'error': agentForm.email.$dirty && agentForm.email.$invalid}">
+    <label>*Email</label>
+    <div class="ui input">
+      <input type="email" ng-model="data.email" name="email" required>
+      <div ng-show="agentForm.email.$dirty && agentForm.email.$invalid"
+        class="ui red pointing above ui label">請輸入 email</div>
+    </div>
+  </div>
+  <div class="field"
+    ng-class="{'error': agentForm.zip.$dirty && agentForm.zip.$invalid}">
+    <label>*郵遞區號</label>
+    <div class="ui input">
+      <input type="text" ng-model="data.zip" name="zip" required>
+      <div ng-show="agentForm.zip.$dirty && agentForm.zip.$invalid"
+        class="ui red pointing above ui label">請輸入郵遞區號</div>
+    </div>
+  </div>
+  <div class="field"
+    ng-class="{'error': agentForm.phone.$dirty && agentForm.phone.$invalid}">
+    <label>*手機號碼</label>
+    <div class="ui input">
+      <input type="text" ng-model="data.phone" name="phone" required>
+      <div ng-show="agentForm.phone.$dirty && agentForm.phone.$invalid"
+        class="ui red pointing above ui label">請輸入手機號碼</div>
+    </div>
+  </div>
+  <div class="field">
+    <label>*您的交通工具是</label>
+    <dropdown class="dropdown" ng-model="data.vehicle" open="false" required>
+      <dropdown-group>汽車</dropdown-group>
+      <dropdown-group>貨車</dropdown-group>
+      <dropdown-group>單車</dropdown-group>
+      <dropdown-group>機車</dropdown-group>
+      <dropdown-group>其他</dropdown-group>
+    </dropdown>
+  </div>
+  <div class="field">
+    <label>留言（選填）</label>
+    <textarea ng-model="data.note"></textarea>
+  </div>
+  <div class="field text-center">
+    <div class="ui blue button"
+      ng-click="submit(data, agentForm)">送出</div>
+  </div>
+</div><!--  END: ui form -->
+
+<div error-message ng-show="'error' === formCtrl.state"></div>
