@@ -29,6 +29,12 @@ angular.module('app', [
 	})
 
 })
+.run(['$rootScope', '$location',
+	function ($rootScope, $location) {
+    $rootScope.$on('$stateChangeSuccess', function(){
+        ga('send', 'pageview', $location.path());
+    });
+}])
 .factory('UserService', ['$firebase', 
 	function ($firebase) {
 	return $firebase(new Firebase("https://q-box.firebaseio.com/anonymous_users"));
