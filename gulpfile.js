@@ -149,6 +149,7 @@ gulp.task('images', function() {
   return gulp.src([
       './bower_components/semantic/build/packaged/images/*.gif',
       './src/images/*.png',
+      './src/images/*.jpg',
       ])
     .pipe(gulp.dest(imgDest))
     .pipe(notify({ message: 'Images task complete' }));

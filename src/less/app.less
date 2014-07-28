@@ -4,6 +4,7 @@
 // import smamtic
 @import 'font-awesome';
 @import 'menu';
+@import 'sidebar';
 @import 'segment';
 @import 'grid';
 @import 'button';
@@ -16,30 +17,35 @@
 @import 'message';
 @import 'list';
 
+// mixin
+.transition(@property:all, @duration:0.2s, @ease:ease-out) {
+  -webkit-transition: all @duration @ease;
+  -moz-transition: all @duration @ease;
+  -o-transition: all @duration @ease;
+  transition: all @duration @ease;
+}
+
 body {
-	margin-right: 0;
-	margin-left: 0;
-	font-family: "Helvetica Neue","Microsoft Jhenghei","微軟正黑體", Helvetica, Arial, Geneva, sans-serif, "SimHei";
+	margin: 0;
+	font-family: 'Roboto Slab','Helvetica Neue','Microsoft Jhenghei','微軟正黑體', Helvetica, Arial, Geneva, sans-serif, 'SimHei';
 	h1, h2, h3, h4, h5, h6, .ui.header {
 		font-weight: normal;
 	}
 }
 p {
 	color: #888888;
+	font-size: 20px;
+	line-height: 1.75rem;
+	@media only screen and (max-width: 900px) {
+		&.breakLine > br {
+			display: none;
+		}
+	}
 }
 .text-center {
 	text-align: center;
 }
-.header.menu .item {
-	line-height: 30px;
-	&.logo {
-		background: url('/images/Qbox-mini.png');
-		background-size: contain;
-		background-repeat: no-repeat;
-		padding-left: 3rem !important;
-		color: #119DD3;
-	}
-}
+
 .fa.fa-bolt.fa-3x {
 	color: #BEBEBE;
 }
@@ -76,16 +82,58 @@ p {
 		}
 	}
 }
-p {
-	font-size: 20px;
-	line-height: 1.75rem;
-	@media only screen and (max-width: 900px) {
-		&.breakLine > br {
-			display: none;
-		}
-	}
-}
+
 .dropdown .fa.fa-caret-down {
 	color: #777;
 	margin-left: 0.5rem;
+}
+
+.header {
+	.menu {
+		float: left;
+		width: 100%;
+		.item {
+			color: #FFFFFF;
+			font-size: 1.25rem;
+			padding: 1.55rem;
+			text-decoration: none;
+			float: left;
+			&.logo {
+				.fa-cube {
+					font-size: 1.75rem;
+				}
+				ext-shadow: 2px 1px 0px rgba(0, 0, 0, 0.3);
+			}
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.5);
+				.transition();
+			}
+		}
+		.right {
+			float: right;
+		}
+	}
+}
+
+.hello {
+	.pic.hero {
+		height: 400px;
+		background: gray;
+		background: url('/images/road-bike.jpg');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		.center.column {
+			padding-top: 130px;
+		}
+		.button {
+			background: rgba(255, 255, 255, 0.4);
+			background-image: none;
+			color: white;
+			&:hover {
+				background: #FFFFFF !important;
+				color: #000000 !important;
+			}
+		}
+	}
 }

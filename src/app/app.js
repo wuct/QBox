@@ -9,32 +9,36 @@ angular.module('app', [
 	'angularify.semantic.dropdown',
 	'templates'])
 .config(function ($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise('/hello');
+	// $urlRouterProvider.otherwise('/');
 	$stateProvider
-	.state('hello', {
-		url: "/hello",
-		templateUrl: "hello.html"
+	// .state('about', {
+	// 	url: "/about",
+	// 	templateUrl: "about.html"
+	// })
+	// .state('agent', {
+	// 	url: "/agent",
+	// 	templateUrl: "agent.html"
+	// })
+	.state('main', {
+		url: '',
+		templateUrl: "main.html"
 	})
-	.state('about', {
-		url: "/about",
-		templateUrl: "about.html"
-	})
-	.state('agent', {
-		url: "/agent",
-		templateUrl: "agent.html"
-	})
+		.state('main.hello', {
+			url: "/hello",
+			// templateUrl: "hello.html"
+		})
 	.state('signup', {
 		url: "/signup",
 		templateUrl: "signup.html"
 	})
 
 })
-.run(['$rootScope', '$location',
-	function ($rootScope, $location) {
-    $rootScope.$on('$stateChangeSuccess', function(){
-        ga('send', 'pageview', $location.path());
-    });
-}])
+// .run(['$rootScope', '$location',
+// 	function ($rootScope, $location) {
+//     $rootScope.$on('$stateChangeSuccess', function (event, toState){
+//         ga('send', 'pageview', $location.path());
+//     });
+// }])
 .factory('UserService', ['$firebase', 
 	function ($firebase) {
 	return $firebase(new Firebase("https://q-box.firebaseio.com/anonymous_users"));
@@ -44,9 +48,27 @@ angular.module('app', [
 	var auth = $firebaseSimpleLogin((new Firebase("https://q-box.firebaseio.com/")));
 	return auth;
 }])
-.controller('layoutCtrl', ['$scope', function ($scope) {
 
+// page directive
+.directive('hello', [function () {
+	return {
+		restrict: 'A',
+		templateUrl: "hello.html"
+	};
 }])
+.directive('agent', [function () {
+	return {
+		restrict: 'A',
+		templateUrl: "agent.html"
+	};
+}])
+.directive('about', [function () {
+	return {
+		restrict: 'A',
+		templateUrl: "about.html"
+	};
+}])
+// util directive
 .directive('successMessage', [function () {
 	return {
 		restrict: 'A',

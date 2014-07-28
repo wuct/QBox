@@ -25,7 +25,9 @@
 
     <title>Qbox</title>
 
-    <link rel="stylesheet" href="css/app.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link href='css/app.css' rel='stylesheet' type='text/css'>
+
     <script src="scripts/vendor.js"></script>
 
     <script>
@@ -40,16 +42,18 @@
     </script>
   </head>
 
-  <body ng-app="app" ng-controller="layoutCtrl">
-    <div class="ui page grid">
-      <div class="column">
-        <div class="ui secondary pointing header menu">
-          <a class="logo item" ui-sref="hello">
-            Qbox
-          </a>
-          <a class="item" ui-sref-active="active" ui-sref="hello">您好</a>
-          <a class="item" ui-sref-active="active" ui-sref="agent">物流夥伴</a>
-          <a class="item" ui-sref-active="active" ui-sref="about">關於</a>
+  <body ng-app="app">
+
+    <div class="header">
+      <div class="menu">
+        <a class="logo item" ui-sref="hello">
+          <i class="fa fa-cube"></i>
+          Qbox
+        </a>
+        <div class="right">
+          <a class="item" ui-sref-active="active" ui-sref="main.hello">您好</a>
+          <a class="item" ui-sref-active="active" ui-sref="main.agent">物流夥伴</a>
+          <a class="item" ui-sref-active="active" ui-sref="main.about">關於</a>
         </div>
       </div>
     </div>

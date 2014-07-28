@@ -14,7 +14,8 @@
  convert Qbox-no-background.png  \
           \( -clone 0 -resize 16x16 -write favicon16.png \) \
           \( -clone 0 -resize 32x32 -write favicon32.png \) \
-          \( -clone 0 -resize 512x512 -write favicon512.png \) \
-          \( -clone 0 -resize 120x120 -write favicon120.png \) \
-          \( -clone 0 -resize 76x76 -write favicon76.png \) \
+          \( -clone 0 -resize 512x512 -write apple-touch-icon-precomposed.png \) \
+          \( -clone 0 -resize 120x120 -write apple-touch-icon-120-precomposed.png \) \
+          \( -clone 0 -resize 76x76 -write apple-touch-icon-76-precomposed.png \) \
+          \( -clone 0 -resize 152x152 -write apple-touch-icon-152-precomposed.png \) \
           null:
