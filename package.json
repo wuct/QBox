@@ -12,7 +12,9 @@
   "devDependencies": {
     "gulp": "^3.8.6",
     "gulp-angular-templatecache": "*",
+    "gulp-awspublish": "0.0.20",
     "gulp-concat": "*",
+    "gulp-gzip": "0.0.8",
     "gulp-less": "*",
     "gulp-livereload": "*",
     "gulp-minify-css": "^0.3.6",
