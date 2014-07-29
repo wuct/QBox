@@ -1,57 +1,71 @@
-<div class="marketingWrap">
-	<div class="ui page grid">
+<div class="marketingWrap agent">
+	<div class="ui grid">
+		<div class="pic hero" set-to-screen-height>
+			<div class="center column">
+				<h2 class="logo">
+					<b>加入 Qbox 物流</b>
+					<i class="fa fa-cube"></i>
+				</h2>
+				<h3>
+					順路送貨，賺取運費
+				</h3>
+				<a ui-sref="^.signup({type:agent})" class="ui large button">我要加入</a>
+			</div>
+		</div>
+	</div>
+	<div class="ui bigMargin white grid">
 		<div class="ui center aligned column">
-			<h1 class="ui black header"
-				style="margin:40px 0;">
-				成為<br>Qbox 夥伴
+			<h1>
+				Qbox 物流夥伴
 			</h1>
 			<div class="ui horizontal bigMargin divider">
 				<i class="fa fa-bolt fa-3x"></i>
 			</div>
 			<p>
-				我們與物流公司、個人業者甚至通勤族合作。不論您的規模與形式，<br>
-				都歡迎您加入 Qbox 平台，接觸新市場，擴展您事業！
+				物流公司、個人業者或通勤族都可以成為我們的物流夥伴。<br>
+				不論您的規模與形式，都歡迎您加入 Qbox，接觸新市場，擴展您事業！<br>
 			</p>
+
+			<div class="ui three column stackable grid"
+				style="margin-top:3rem;">
+				<div class="center aligned column">
+					<div>
+						<i class="fa fa-file-text-o big style"></i>
+					</div>
+					<h2>自訂條件</h2>
+					<p>您可以在任何時間接您想接的案子，條件由您決定</p>
+				</div>
+				<div class="center aligned column">
+					<div>
+						<i class="fa fa-truck big style"></i>
+					</div>
+					<h2>不限車種</h2>
+					<p>
+						您可以用單車、機車、轎車、貨車或其他任何您擁有交通工具
+					</p>
+				</div>
+				<div class="center aligned column">
+					<div>
+						<i class="fa fa-dollar big style"></i>
+					</div>
+					<h2>賺取收入</h2>
+					<p>利用車上多餘空間順路送貨，彈性地賺取額外收入</p>
+				</div>
+			</div> <!-- END: three column -->
 		</div>
 	</div>
 
-	<div class="ui three column bigMargin stackable page grid">
-		<div class="center aligned column">
-			<div>
-				<i class="fa fa-file-text-o big style"></i>
+	<div class="ui bigMargin grid">
+		<div class="row">
+			<div class="column">
+				<h1 class="text-center">
+			      加入 Qbox 物流行列
+			    </h1>
+				<div class="ui horizontal bigMargin divider">
+					<i class="fa fa-bolt fa-3x"></i>
+				</div>
+				<div agent-sign-up-form class="sign-up-form"></div>
 			</div>
-			<h2 class="ui black header">自訂條件</h2>
-			<p>您可以在任何時間接您想接的案子，條件由您決定</p>
 		</div>
-		<div class="center aligned column">
-			<div>
-				<i class="fa fa-truck big style"></i>
-			</div>
-			<h2 class="ui black header">不限車種</h2>
-			<p>
-				只要能確保安全，您可以用單車、機車、轎車、貨車或其他任何交通工具
-			</p>
-		</div>
-		<div class="center aligned column">
-			<div>
-				<i class="fa fa-dollar big style"></i>
-			</div>
-			<h2 class="ui black header">賺取收入</h2>
-			<p>加入 Qbox 讓您輕鬆、彈性地賺取額外收入</p>
-		</div>
-
-		<h1 class="ui center aligned black header"
-			style="margin-top:80px;">成為 Qbox 物流夥伴</h1>
-		<div class="ui horizontal divider">
-			<i class="fa fa-bolt fa-3x"></i>
-		</div>
-	</div> <!-- END: three column -->
-
-	<div class="ui three column doubling grid">
-		<div class="column"></div>
-		<div class="column">
-			<div agent-sign-up-form></div>
-		</div>
-		<div class="column"></div>
 	</div>
 </div>

@@ -3,19 +3,33 @@
 
 // import smamtic
 @import 'font-awesome';
-@import 'menu';
-@import 'sidebar';
+// @import 'menu';
+// @import 'sidebar';
 @import 'segment';
 @import 'grid';
 @import 'button';
-@import 'header';
+// @import 'header';
 @import 'label';
 @import 'input';
 @import 'divider';
 @import 'dropdown';
 @import 'form';
 @import 'message';
-@import 'list';
+// @import 'list';
+
+// color
+@blue: #25c6b4;
+@blueDarker: #48B0A5;
+@orange: #f9a221;
+@green: #41d856;
+@red:#f44250;
+@purple: #77003c;
+@teal: #136873;
+@pink: #f8987f;
+@brown: #aa9954;
+@gray: #878e86;
+@grayDarker: #414849;
+@grayLighter: #e9ece9;
 
 // mixin
 .transition(@property:all, @duration:0.2s, @ease:ease-out) {
@@ -24,89 +38,171 @@
   -o-transition: all @duration @ease;
   transition: all @duration @ease;
 }
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: 	 rotate(@deg);
+	-ms-transform: 		 rotate(@deg);
+	-o-transform: 		 rotate(@deg);
+}
+.rotateY (@deg) {
+	-webkit-transform: rotateY(@deg);
+	-moz-transform: 	 rotateY(@deg);
+	-ms-transform: 		 rotateY(@deg);
+	-o-transform: 		 rotateY(@deg);
+}
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+// default
 body {
 	margin: 0;
-	font-family: 'Roboto Slab','Helvetica Neue','Microsoft Jhenghei','微軟正黑體', Helvetica, Arial, Geneva, sans-serif, 'SimHei';
-	h1, h2, h3, h4, h5, h6, .ui.header {
+	font-family: 'Helvetica Neue','Microsoft Jhenghei','微軟正黑體', Helvetica, Arial, Geneva, sans-serif, 'SimHei';
+	color: #565a5c;
+	background-color: @grayLighter;
+	h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;
+		color: @grayDarker;
+		&.white {
+			color: #ffffff;
+		}
+	}
+	h1 {
+		font-size: 2.5rem;
+	}
+	p {
+		color: @gray;
+		font-size: 20px;
+		line-height: 1.75rem;
 	}
 }
+.footer {
+	padding: 3rem 0;
+	background-image: url('/images/cubes.png');
+}
 p {
-	color: #888888;
-	font-size: 20px;
-	line-height: 1.75rem;
 	@media only screen and (max-width: 900px) {
 		&.breakLine > br {
 			display: none;
 		}
 	}
 }
+.ui.button {
+	font-weight: 400;
+}
+.ui.grid {
+	&.white {
+		background-color: #ffffff;
+	}
+	&.bigMargin {
+		margin: 4rem 0;
+		&.white {
+			margin: 0 0;
+			padding: 4rem 2rem;
+		}
+	}
+}
 .text-center {
 	text-align: center;
 }
-
+.horizontal.list {
+	display: inline-block;
+	 font-size: 0em;
+	> .item {
+		display: inline-block;
+		margin-left: 1em;
+		font-size: 1rem;
+		&:first-child {
+			margin-left: 0em;
+		}
+		> a {
+			color: @gray;
+			.transition();
+			&:hover {
+				color: @grayDarker;
+			}
+		}
+	}
+}
 .fa.fa-bolt.fa-3x {
 	color: #BEBEBE;
 }
 .marketingWrap {
 	i.style {
-		color: #6ECFF5;
-		text-shadow: 4px 3px 0px #FFFFFF, 9px 8px 0px #119DD3;
+		color: @blue;
+		text-shadow: 4px 3px 0px #ffffff, 9px 8px 0px @blueDarker;
+		.transition();
 		&.big{
 			font-size: 8rem;
 		}
+		&:hover {
+			opacity: 0.85;
+		}
 	}
 	.bigMargin {
-		&.grid {
-			margin: 3rem 0;
-		}
 		&.horizontal.divider {
-			margin: 3rem 0;
+			margin: 2.5rem 0;
 		}
 	}
 	.equal.height.row {
-		.column {
-			padding: 2rem;
-		}
 		.color.aligned.column {
+			padding: 20px 20px !important;
+			margin-top: 0 !important;
 			&.right {
-				background-color: #BDBDBD;
+				background-color: @orange;
 			}
 			&.left {
-				background-color: #8A8A8A;
+				background-color: @green;
 			}
-			.ui.header, p {
+			h1, p {
 				color: #fff;
+				margin: 0.8em 0;
 			}
 		}
 	}
 }
-
 .dropdown .fa.fa-caret-down {
 	color: #777;
 	margin-left: 0.5rem;
 }
-
+.logo {
+	font-family: 'Roboto Slab';
+	&:hover {
+		i.fa-cube {
+			.rotateY(180deg);
+			.transition();
+			color: @green;
+		}
+	}
+}
+.sign-up-form {
+	.center-block();
+	width: 450px;
+	@media only screen and (max-width: 510px) {
+		width: 300px;
+	}
+}
 .header {
+	position: relative;
+	z-index: 100;
 	.menu {
 		float: left;
 		width: 100%;
 		.item {
-			color: #FFFFFF;
-			font-size: 1.25rem;
-			padding: 1.55rem;
-			text-decoration: none;
 			float: left;
+			margin: 1rem 0;
+			padding: 0 0.8rem;
+			line-height: 1.75rem;
+			color: #FFFFFF;
+			font-size: 1.05rem;
+			text-decoration: none;
 			&.logo {
 				.fa-cube {
 					font-size: 1.75rem;
 				}
 				ext-shadow: 2px 1px 0px rgba(0, 0, 0, 0.3);
-			}
-			&:hover {
-				background-color: rgba(0, 0, 0, 0.5);
-				.transition();
 			}
 		}
 		.right {
@@ -114,26 +210,59 @@ p {
 		}
 	}
 }
-
-.hello {
-	.pic.hero {
-		height: 400px;
-		background: gray;
-		background: url('/images/road-bike.jpg');
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-size: cover;
-		.center.column {
-			padding-top: 130px;
+.hello .pic.hero {
+	background-image: url('/images/road-bike.jpg');
+	background-position:center 72%;
+}
+.agent .pic.hero {
+	background-image: url('/images/taipei-street.jpg');
+	background-position:center 72%;
+}
+.about .pic.hero {
+	background-image: url('/images/operator-girl.jpg');
+	background-position:center 72%;
+}
+.pic.hero {
+	height: 700px;
+	background: gray;
+	background-image: url('/images/boat.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position:center 72%;
+	position: relative;
+	z-index: 2;
+	.center.column {
+		font-size: 1rem;
+		position:absolute; 
+		top:50%;
+		text-align: center;
+		left: 50%;
+		width: 100%;
+		transform: translateX(-50%) translateY(-50%);
+		h1, h2, h3, h4 {
+			color: #FFFFFF;
 		}
-		.button {
-			background: rgba(255, 255, 255, 0.4);
-			background-image: none;
-			color: white;
-			&:hover {
-				background: #FFFFFF !important;
-				color: #000000 !important;
-			}
+		h1 {
+			font-size: 4em;
+		}
+		h2 {
+			font-size: 3em;
+		}
+		h3 {
+			font-size: 1.5em;
+		}
+		h4 {
+			font-size: 1.3em;
+		}
+	}
+	.button {
+		background: rgba(255, 255, 255, 0.44);
+		background-image: none;
+		color: white;
+		&:hover {
+			background: #FFFFFF !important;
+			color: #000000 !important;
 		}
 	}
 }

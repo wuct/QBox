@@ -27,18 +27,18 @@ angular.module('app', [
 			url: "/hello",
 			// templateUrl: "hello.html"
 		})
-	.state('signup', {
+	.state('signup?type', {
 		url: "/signup",
 		templateUrl: "signup.html"
 	})
 
 })
-// .run(['$rootScope', '$location',
-// 	function ($rootScope, $location) {
-//     $rootScope.$on('$stateChangeSuccess', function (event, toState){
-//         ga('send', 'pageview', $location.path());
-//     });
-// }])
+.run(['$rootScope', '$location',
+	function ($rootScope, $location) {
+    $rootScope.$on('$stateChangeSuccess', function (event, toState){
+        ga('send', 'pageview', $location.path());
+    });
+}])
 .factory('UserService', ['$firebase', 
 	function ($firebase) {
 	return $firebase(new Firebase("https://q-box.firebaseio.com/anonymous_users"));
@@ -69,6 +69,25 @@ angular.module('app', [
 	};
 }])
 // util directive
+.directive('setToScreenHeight', [function () {
+	return {
+		restrict: 'A',
+		link: function (scope, iElement, iAttrs) {
+			var w = window,
+		    d = document,
+		    e = d.documentElement,
+		    g = d.getElementsByTagName('body')[0],
+		    // x = w.innerWidth || e.clientWidth || g.clientWidth,
+		    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+		    y = y < 400
+		    	? 400
+		    	: y > 800
+		    		? 800
+		    		: y;
+		    angular.element(iElement).css('height', y + 'px');
+		}
+	};
+}])
 .directive('successMessage', [function () {
 	return {
 		restrict: 'A',
@@ -86,6 +105,7 @@ angular.module('app', [
 		restrict: 'A',
 		templateUrl: "signUpForm.html",
 		controller: 'formCtrl as formCtrl',
+		scope: {},
 		link: function (scope, iElement, iAttrs) {
 			// init data
 			scope.data = {
@@ -99,6 +119,7 @@ angular.module('app', [
 		restrict: 'A',
 		templateUrl: "agentSignUpForm.html",
 		controller: 'formCtrl as formCtrl',
+		scope: {},
 		link: function (scope, iElement, iAttrs) {
 			// init data
 			scope.data = {

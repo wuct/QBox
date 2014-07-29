@@ -1,29 +1,32 @@
 <div class="hello marketingWrap">
 	<div class="ui grid">
-		<div class="pic hero">
-			<div class="ui center aligned column">
-				<h1 class="ui inverted header">
+		<div class="pic hero" set-to-screen-height>
+			<div class="center column">
+				<h1 class="logo">
 					<b>Qbox</b>
 				</h1>
-				<h3 class="ui inverted header">
+				<h3>
+					<!-- 讓值得信賴的人幫您送東西 -->
 					寄東西原來可以如此簡單
+					<!-- 上門取件 免費包裝 -->
+
 				</h3>
 				<a ui-sref="^.signup" class="ui large button">下載 App</a>
 			</div>
 		</div>
 	</div>
 
-	<div class="ui page bigMargin grid">
+	<div class="ui bigMargin white grid">
 		<div class="row">
 			<div class="center aligned column">
-				<h2 class="ui black header">
-					如何運作
-				</h2>
+				<h1>
+					如何寄貨
+				</h1>
 				<div class="ui horizontal bigMargin divider">
 					<i class="fa fa-bolt fa-3x"></i>
 				</div>
 
-				<div class="ui three column bigMargin stackable grid">
+				<div class="ui three column stackable grid">
 					<div class="center aligned column">
 						<div>
 							<i class="fa fa-mobile big style"></i>
@@ -35,7 +38,7 @@
 						<div>
 							<i class="fa fa-truck big style"></i>
 						</div>
-						<h2 class="ui black header">放鬆等待</h2>
+						<h2 class="ui black header">輕鬆等待</h2>
 						<p>喝杯水休息一下，Qbox 會在數分鐘後抵達您的位置向您取件</p>
 					</div>
 					<div class="center aligned column">
@@ -49,15 +52,17 @@
 					</div>
 				</div> <!-- END: three column -->
 
-				<a ui-sref="^.signup" class="ui large blue button">下載 App</a>
+				<a ui-sref="^.signup" class="ui huge blue button">
+					下載 App
+				</a>
 			</div>
 		</div>
 	</div>
 
-	<div class="ui two column bigMargin grid">
+	<div class="ui two column stackable grid">
 	  <div class="equal height row">
 	    <div class="right aligned color column">
-	    	<h1 class="ui header">個人</h1>
+	    	<h1>個人</h1>
 				<p class="breakLine">
 					我們提供您一個全新的寄送方式。您無需再花時間研究<br>
 					複雜的郵資費率與包裝規定，無論包裹大小、<br>
@@ -65,7 +70,7 @@
 				</p>
 	    </div>
 	    <div class="left aligned color column">
-	    	<h1 class="ui header">商家</h1>
+	    	<h1>商家</h1>
 				<p class="breakLine">
 					我們幫助您用全新的方式與顧客互動。把繁瑣的包裝與<br>
 					物流交給 Qbox，您可以節省時間、運費，更可以<br>
@@ -75,20 +80,16 @@
 	  </div>
 	</div>
 
-	<div class="ui page grid">
-		<div class="column">
-			<h2 class="ui center aligned black header">
-		      立即註冊
-		    </h2>
-			<div class="ui horizontal bigMargin divider">
-				<i class="fa fa-bolt fa-3x"></i>
-			</div>
-			<div class="ui three column doubling grid">
-				<div class="column"></div>
-				<div class="column">
-					<div sign-up-form></div>
+	<div class="ui bigMargin grid">
+		<div class="row">
+			<div class="column">
+				<h1 class="text-center">
+			      立即註冊
+			    </h1>
+				<div class="ui horizontal bigMargin divider">
+					<i class="fa fa-bolt fa-3x"></i>
 				</div>
-				<div class="column"></div>
+				<div sign-up-form class="sign-up-form"></div>
 			</div>
 		</div>
 	</div>
