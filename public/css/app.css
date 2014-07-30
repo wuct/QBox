@@ -7008,9 +7008,6 @@ body p {
 .fa.fa-bolt.fa-3x {
   color: #BEBEBE;
 }
-.bigMargin.horizontal.divider {
-  margin: 1rem 0;
-}
 .marketingWrap i.style {
   color: #25c6b4;
   text-shadow: 4px 3px 0px #ffffff, 9px 8px 0px #48b0a5;
@@ -7076,7 +7073,7 @@ body p {
 }
 @media only screen and (max-width: 510px) {
   .sign-up-form {
-    width: 300px;
+    width: 100%;
   }
 }
 .header {
@@ -7138,6 +7135,7 @@ body p {
 }
 .hello .pic.hero {
   background-image: url('/images/road-bike.jpg');
+  background-image: -webkit-image-set(url('/images/road-bike.jpg') 1x, url('/images/road-bike.jpg') 2x);
   background-position: center 72%;
 }
 .agent .pic.hero {
@@ -7151,13 +7149,13 @@ body p {
 .pic.hero {
   height: 700px;
   background: gray;
-  background-image: url('/images/boat.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: center 72%;
   position: relative;
   z-index: 2;
+  font-size: 0em;
 }
 .pic.hero .center.column {
   font-size: 1rem;
@@ -7166,7 +7164,10 @@ body p {
   text-align: center;
   left: 50%;
   width: 100%;
-  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
 }
 .pic.hero .center.column h1,
 .pic.hero .center.column h2,

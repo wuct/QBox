@@ -39,6 +39,12 @@
   -o-transition: all @duration @ease;
   transition: all @duration @ease;
 }
+.transform(@string){
+	-webkit-transform: @string;
+	-moz-transform: 	 @string;
+	-ms-transform: 		 @string;
+	-o-transform: 		 @string;
+}
 .rotate (@deg) {
 	-webkit-transform: rotate(@deg);
 	-moz-transform: 	 rotate(@deg);
@@ -131,9 +137,6 @@ p {
 .fa.fa-bolt.fa-3x {
 	color: #BEBEBE;
 }
-.bigMargin.horizontal.divider {
-	margin: 1rem 0;
-}
 .marketingWrap {
 	i.style {
 		color: @blue;
@@ -185,7 +188,7 @@ p {
 	.center-block();
 	width: 450px;
 	@media only screen and (max-width: 510px) {
-		width: 300px;
+		width: 100%;
 	}
 }
 .header {
@@ -239,6 +242,10 @@ p {
 }
 .hello .pic.hero {
 	background-image: url('/images/road-bike.jpg');
+	background-image: -webkit-image-set(
+			url('/images/road-bike.jpg') 1x, 
+			url('/images/road-bike.jpg') 2x
+		);
 	background-position:center 72%;
 }
 .agent .pic.hero {
@@ -252,13 +259,14 @@ p {
 .pic.hero {
 	height: 700px;
 	background: gray;
-	background-image: url('/images/boat.jpg');
+	// background-image: url('/images/boat.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
 	background-position:center 72%;
 	position: relative;
 	z-index: 2;
+	font-size: 0em;
 	.center.column {
 		font-size: 1rem;
 		position:absolute; 
@@ -266,7 +274,7 @@ p {
 		text-align: center;
 		left: 50%;
 		width: 100%;
-		transform: translateX(-50%) translateY(-50%);
+		.transform(translateX(-50%) translateY(-50%));
 		h1, h2, h3, h4 {
 			color: #FFFFFF;
 		}
