@@ -37,8 +37,12 @@ angular.module('app', [
 .run(['$rootScope', '$location',
 	function ($rootScope, $location) {
     $rootScope.$on('duScrollspy:becameActive', function($event, $element){
-		var hash = $element.prop('hash');
-        ga('send', 'pageview', hash.substr(1));
+		var hash = $element.prop('hash').substr(1);
+		$location.path(hash);
+        ga('send', 'pageview', hash);
+    });
+    $rootScope.$on('duScrollspy:becameInactive', function($event, $element){
+    	// console.log('inactice')
     });
 }])
 .factory('UserService', ['$firebase', 
@@ -71,6 +75,27 @@ angular.module('app', [
 	};
 }])
 // util directive
+.directive('dynamicBackground', [function () {
+	return {
+		restrict: 'A',
+		link: function (scope, iElement, iAttrs) {
+			scope.$on('duScrollspy:becameInactive', function() {
+				iElement.addClass('inactive');
+				iElement.removeClass('hide');
+			});
+			scope.$on('duScrollspy:becameActive', function($event, $element) {
+				iElement.removeClass('inactive');
+				var hash = $element.prop('hash').substr(1);
+				var needHide = ['signup', 'signupAgent'].indexOf(hash) !== -1;
+				if (needHide) {
+					iElement.addClass('hide');
+				} else {
+					iElement.removeClass('hide');
+				}
+			});
+		}
+	};
+}])
 .directive('setToScreenHeight', [function () {
 	return {
 		restrict: 'A',
@@ -112,6 +137,7 @@ angular.module('app', [
 			// init data
 			scope.data = {
 				type: 'customer',
+				createdAt: new Date()
 			}	
 		}
 	};
@@ -126,7 +152,8 @@ angular.module('app', [
 			// init data
 			scope.data = {
 				type: 'agent',
-				vehicle: '汽車'
+				vehicle: '汽車',
+				createdAt: new Date()
 			}
 		}
 	};
@@ -157,6 +184,7 @@ angular.module('app', [
 		.then(function updateDataSuccess () {
 			self.state = 'success';
 			AuthService.$logout();
+			ga('send', 'pageview', '/conversion/signup/' + data.type);
 		}, function error (httpRes) {
 			self.state = 'error';
 			console.log(httpRes);
