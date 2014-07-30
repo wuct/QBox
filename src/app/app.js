@@ -4,13 +4,14 @@
 'use strict';
 
 angular.module('app', [
-	'ui.router',
+	// 'ui.router',
+	'duScroll',
 	'firebase',
 	'angularify.semantic.dropdown',
 	'templates'])
-.config(function ($stateProvider, $urlRouterProvider) {
+// .config(function ($stateProvider, $urlRouterProvider) {
 	// $urlRouterProvider.otherwise('/');
-	$stateProvider
+	// $stateProvider
 	// .state('about', {
 	// 	url: "/about",
 	// 	templateUrl: "about.html"
@@ -19,24 +20,25 @@ angular.module('app', [
 	// 	url: "/agent",
 	// 	templateUrl: "agent.html"
 	// })
-	.state('main', {
-		url: '',
-		templateUrl: "main.html"
-	})
-		.state('main.hello', {
-			url: "/hello",
-			// templateUrl: "hello.html"
-		})
-	.state('signup?type', {
-		url: "/signup",
-		templateUrl: "signup.html"
-	})
+	// .state('main', {
+	// 	url: '',
+	// 	templateUrl: "main.html"
+	// })
+	// 	.state('main.hello', {
+	// 		url: "/hello",
+	// 		// templateUrl: "hello.html"
+	// 	})
+	// .state('signup?type', {
+	// 	url: "/signup",
+	// 	templateUrl: "signup.html"
+	// })
 
-})
+// })
 .run(['$rootScope', '$location',
 	function ($rootScope, $location) {
-    $rootScope.$on('$stateChangeSuccess', function (event, toState){
-        ga('send', 'pageview', $location.path());
+    $rootScope.$on('duScrollspy:becameActive', function($event, $element){
+		var hash = $element.prop('hash');
+        ga('send', 'pageview', hash.substr(1));
     });
 }])
 .factory('UserService', ['$firebase', 

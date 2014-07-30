@@ -46,19 +46,20 @@
 
     <div class="header">
       <div class="menu">
-        <a class="logo item" ui-sref="hello">
+        <a class="logo item" href="#hello" du-smooth-scroll du-scrollspy>
           <i class="fa fa-cube"></i>
           Qbox
         </a>
         <div class="right">
-          <a class="item" ui-sref-active="active" ui-sref="main.hello">您好</a>
-          <a class="item" ui-sref-active="active" ui-sref="main.agent">物流夥伴</a>
-          <a class="item" ui-sref-active="active" ui-sref="main.about">關於</a>
+          <a class="item" href="#signup" du-smooth-scroll du-scrollspy>註冊</a>
+          <a class="item" href="#agent" du-smooth-scroll du-scrollspy>物流夥伴</a>
+          <a class="item" href="#about" du-smooth-scroll du-scrollspy>關於</a>
         </div>
       </div>
     </div>
-    
-    <div ui-view></div>
+    <div hello id="hello"></div>
+    <div agent id="agent"></div>
+    <div about id="about"></div>
 
     <div class="footer text-center">
         <div class="horizontal list">
@@ -67,14 +68,20 @@
           </div>
           <div class="item">
             <a href="https://www.facebook.com/pages/Qbox/666693790083078">
-              <i class="fa fa-facebook icon"></i>
+              <i class="fa fa-facebook"></i>
             </a>
           </div>
           <div class="item">
             <a href="https://twitter.com/qboxapp">
-              <i class="fa fa-twitter icon"></i>
+              <i class="fa fa-twitter"></i>
             </a>
           </div>
+          <div class="item">
+            <a href="mailto:service@q-box.co">
+             <i class="fa fa-envelope"></i>
+            </a>
+          </div>
+        </a>
         </div>
     </div>
 

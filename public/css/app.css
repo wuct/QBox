@@ -6415,7 +6415,7 @@ body p {
   line-height: 1.75rem;
 }
 .footer {
-  padding: 3rem 0;
+  padding: 4rem 0;
   background-image: url('/images/cubes.png');
 }
 @media only screen and (max-width: 900px) {
@@ -6464,6 +6464,9 @@ body p {
 .fa.fa-bolt.fa-3x {
   color: #BEBEBE;
 }
+.bigMargin.horizontal.divider {
+  margin: 1rem 0;
+}
 .marketingWrap i.style {
   color: #25c6b4;
   text-shadow: 4px 3px 0px #ffffff, 9px 8px 0px #48b0a5;
@@ -6477,9 +6480,6 @@ body p {
 }
 .marketingWrap i.style:hover {
   opacity: 0.85;
-}
-.marketingWrap .bigMargin.horizontal.divider {
-  margin: 2.5rem 0;
 }
 .marketingWrap .equal.height.row .color.aligned.column {
   padding: 20px 20px !important;
@@ -6503,6 +6503,16 @@ body p {
 .logo {
   font-family: 'Roboto Slab';
 }
+.logo i.fa-cube {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 .logo:hover i.fa-cube {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
@@ -6512,7 +6522,7 @@ body p {
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-  color: #41d856;
+  color: #6ecff5;
 }
 .sign-up-form {
   display: block;
@@ -6528,6 +6538,7 @@ body p {
 .header {
   position: relative;
   z-index: 100;
+  margin: 0 3rem;
 }
 .header .menu {
   float: left;
@@ -6535,18 +6546,25 @@ body p {
 }
 .header .menu .item {
   float: left;
-  margin: 1rem 0;
-  padding: 0 0.8rem;
+  margin: 1rem 0.8rem;
+  padding: 0 0;
   line-height: 1.75rem;
   color: #FFFFFF;
   font-size: 1.05rem;
   text-decoration: none;
 }
-.header .menu .item.logo {
-  ext-shadow: 2px 1px 0px rgba(0, 0, 0, 0.3);
-}
 .header .menu .item.logo .fa-cube {
   font-size: 1.75rem;
+}
+.header .menu .item.logo:hover {
+  border-bottom: none;
+}
+.header .menu .item:hover {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid #ffffff;
 }
 .header .menu .right {
   float: right;

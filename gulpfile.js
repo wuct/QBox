@@ -103,7 +103,8 @@ gulp.task('scripts:vendor', function() {
   return gulp.src([
     // order matter
     "bower_components/angular/angular.js",
-    "bower_components/angular-ui-router/release/angular-ui-router.js",
+    "bower_components/angular-scroll/angular-scroll.js",
+    // "bower_components/angular-ui-router/release/angular-ui-router.js",
     "bower_components/angular-sanitize/angular-sanitize.js",
     "bower_components/firebase/firebase.js",
     "bower_components/firebase-simple-login/firebase-simple-login.js",
@@ -120,11 +121,11 @@ gulp.task('styles', function() {
   return gulp.src('./src/less/app.less')
     .pipe(less({
       paths  : [
-        "./bower_components/fontawesome/less/",
         "./bower_components/semantic/build/less/collections/",
         "./bower_components/semantic/build/less/elements/",
         "./bower_components/semantic/build/less/modules/",
         "./bower_components/semantic/build/less/views/",
+        "./bower_components/fontawesome/less/",
       ]
     }))
     .pipe(gulp.dest(cssDest))
