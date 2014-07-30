@@ -84,7 +84,7 @@ angular.module('app', [
 		    	: y > 800
 		    		? 800
 		    		: y;
-		    angular.element(iElement).css('height', y + 'px');
+		    iElement.css('height', y + 'px');
 		}
 	};
 }])
