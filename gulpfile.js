@@ -13,8 +13,9 @@ var gulp = require('gulp')
 , rimraf = require('gulp-rimraf')
 , less = require('gulp-less')
 , minifyCSS = require('gulp-minify-css')
-, s3 = require("gulp-s3")
-, awspublish = require('gulp-awspublish');
+, revall = require('gulp-rev-all')
+, awspublish = require('gulp-awspublish')
+, cloudfront = require("gulp-cloudfront")
 ;
 
 var distDir = './public/'
@@ -38,15 +39,44 @@ gulp.task('clean', function() {
   .pipe(notify({ message: 'Clean task complete' }));
 });
 
-gulp.task('compress', ['scripts', 'styles'], function () {
-  gulp.src(cssDest +'/*.css')
+gulp.task('publish', ['compress'], function() {
+  var aws = {
+    key: process.env.AWS_S3_CDN_KEY,
+    secret: process.env.AWS_S3_CDN_SECRET,
+    bucket: "q-box.co",
+    region: "ap-northeast-1",
+    distributionId: 'EW5REXE8JRGWK'
+  };
+  var publisher = awspublish.create(aws);
+  var headers = {'Cache-Control': 'max-age=315360000, no-transform, public'};
+
+  return gulp.src(distDir + '**')
+    .pipe(revall({ ignore: [] }))
+    .pipe(publisher.publish(headers)) // upload unzip files
+    .pipe(publisher.sync()) // delete files in the bucket that are not in the local folder
+    // .pipe(awspublish.gzip({ ext: '.gz' }))
+    // .pipe(publisher.publish()) // upload gzipped files
+    .pipe(publisher.cache())
+    .pipe(awspublish.reporter())
+    .pipe(cloudfront(aws));
+});
+
+// Compress
+gulp.task('compress', ['compress:css', 'compress:js'], function () {
+  return;
+});
+
+gulp.task('compress:css', ['styles'], function () {
+  return gulp.src(cssDest +'/*.css')
     .pipe(minifyCSS())
     .pipe(gulp.dest(cssDest))
     // .pipe(gzip())
     // .pipe(gulp.dest(cssDest))
     .pipe(notify({ message: 'Compress styles task complete' }));
+});
 
-  gulp.src(jsDest + '/*.js')
+gulp.task('compress:js', ['scripts', 'htmls'], function () {
+  return gulp.src(jsDest + '/*.js')
     .pipe(uglify({mangle: false}))
     .pipe(gulp.dest(jsDest))
     // .pipe(gzip())
@@ -54,35 +84,7 @@ gulp.task('compress', ['scripts', 'styles'], function () {
     .pipe(notify({ message: 'Compress scripts task complete' }));
 });
 
-gulp.task('s3', function() {
-  return gulp.src(distDir +'**')
-  .pipe(s3({
-    "key": process.env.AWS_S3_CDN_KEY,
-    "secret": process.env.AWS_S3_CDN_SECRET,
-    "bucket": "q-box.co",
-    "region": "ap-northeast-1"
-  }));
-});
-
-gulp.task('publish', ['compress'], function() {
-  var publisher = awspublish.create({
-    key: process.env.AWS_S3_CDN_KEY,
-    secret: process.env.AWS_S3_CDN_SECRET,
-    bucket: "q-box.co",
-    region: "ap-northeast-1"
-  });
-
-  return gulp.src(distDir + '**')
-    .pipe(publisher.publish()) // upload unzip files
-    .pipe(publisher.sync()) // delete files in the bucket that are not in the local folder
-    // .pipe(awspublish.gzip({ ext: '.gz' }))
-    // .pipe(publisher.publish()) // upload gzipped files
-    .pipe(publisher.cache())
-    .pipe(awspublish.reporter());
-});
-
 // Scripts
-
 gulp.task('scripts', ['scripts:vendor', 'scripts:templates'], function() {
   return gulp.src([jsSrc, tempDir + '/templates.js'])
     .pipe(concat('main.js'))
