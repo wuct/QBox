@@ -7135,7 +7135,6 @@ body p {
 }
 .hello .pic.hero {
   background-image: url('/images/road-bike.jpg');
-  background-image: -webkit-image-set(url('/images/road-bike.jpg') 1x, url('/images/road-bike.jpg') 2x);
   background-position: center 72%;
 }
 .agent .pic.hero {
@@ -7150,9 +7149,7 @@ body p {
   height: 700px;
   background: gray;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
-  background-position: center 72%;
   position: relative;
   z-index: 2;
   font-size: 0em;

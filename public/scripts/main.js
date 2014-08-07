@@ -109,9 +109,14 @@ angular.module('app', [
 		    y = y < 400
 		    	? 400
 		    	: y > 800
-		    		? 800
-		    		: y;
+		    		? 800 * 0.9
+		    		: y * 0.9;
 		    iElement.css('height', y + 'px');
+		    
+		    // if user-agent is not mobile device
+		    if(typeof window.orientation === 'undefined'){
+		    	iElement.css('background-attachment', 'fixed');
+		    }
 		}
 	};
 }])
