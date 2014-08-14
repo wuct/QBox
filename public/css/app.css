@@ -7134,6 +7134,14 @@ body p {
 .header .menu .right {
   float: right;
 }
+p.privacy {
+  color: #878e86;
+  font-size: 13px;
+}
+p.privacy > a {
+  color: #878e86;
+  font-size: 11px;
+}
 .hello .pic.hero {
   background-image: url('/images/road-bike.jpg');
   background-position: center 72%;
