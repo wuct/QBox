@@ -34,8 +34,11 @@ angular.module('app', [
 	// })
 
 // })
-.run(['$rootScope', '$location',
-	function ($rootScope, $location) {
+.run([
+	'$rootScope', 
+	'$location',
+	'$document',
+	function ($rootScope, $location, $document) {
     $rootScope.$on('duScrollspy:becameActive', function($event, $element){
 		var hash = $element.prop('hash').substr(1);
 		$location.path(hash);
@@ -43,6 +46,13 @@ angular.module('app', [
     });
     $rootScope.$on('duScrollspy:becameInactive', function($event, $element){
     	// console.log('inactice')
+    });
+    $rootScope.$watch(function() {
+    	return $location.path()
+    }, function (newVal) {
+    	var someElement = angular.element(document.getElementById(newVal.substr(1)));
+    	if (someElement.length == 0) return; // 404 route not found
+	    $document.scrollToElement(someElement[0]);
     });
 }])
 .factory('UserService', ['$firebase', 
