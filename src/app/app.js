@@ -38,7 +38,8 @@ angular.module('app', [
 	'$rootScope', 
 	'$location',
 	'$document',
-	function ($rootScope, $location, $document) {
+	'$timeout',
+	function ($rootScope, $location, $document, $timeout) {
     $rootScope.$on('duScrollspy:becameActive', function($event, $element){
 		var hash = $element.prop('hash').substr(1);
 		$location.path(hash);
@@ -47,13 +48,14 @@ angular.module('app', [
     $rootScope.$on('duScrollspy:becameInactive', function($event, $element){
     	// console.log('inactice')
     });
-    $rootScope.$watch(function() {
-    	return $location.path()
-    }, function (newVal) {
-    	var someElement = angular.element(document.getElementById(newVal.substr(1)));
-    	if (someElement.length == 0) return; // 404 route not found
-	    $document.scrollToElement(someElement[0]);
-    });
+    // wait dom ready, for init route
+	var initPath = $location.path();
+    $timeout(function() {
+    	if (['agent', 'about'].indexOf(initPath.substr(1)) === -1) return; // only scroll to this 2 page
+    	var someElement = angular.element(document.getElementById(initPath.substr(1)));
+	    $document.scrollToElement(someElement[0], 0, 600);
+    }, 500); 
+
 }])
 .factory('UserService', ['$firebase', 
 	function ($firebase) {
