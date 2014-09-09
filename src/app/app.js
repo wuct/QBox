@@ -67,25 +67,6 @@ angular.module('app', [
 	return auth;
 }])
 
-// page directive
-.directive('hello', [function () {
-	return {
-		restrict: 'A',
-		templateUrl: "hello.html"
-	};
-}])
-.directive('agent', [function () {
-	return {
-		restrict: 'A',
-		templateUrl: "agent.html"
-	};
-}])
-.directive('about', [function () {
-	return {
-		restrict: 'A',
-		templateUrl: "about.html"
-	};
-}])
 // util directive
 .directive('dynamicBackground', [function () {
 	return {
