@@ -4,26 +4,25 @@
 'use strict';
 
 angular.module('app', [
-	// 'ui.router',
+	'ui.router',
 	'duScroll',
 	'firebase',
 	'angularify.semantic.dropdown',
 	'templates'])
-// .config(function ($stateProvider, $urlRouterProvider) {
-	// $urlRouterProvider.otherwise('/');
-	// $stateProvider
+.config(function ($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise('/');
+	$stateProvider
 	// .state('about', {
 	// 	url: "/about",
 	// 	templateUrl: "about.html"
 	// })
-	// .state('agent', {
-	// 	url: "/agent",
-	// 	templateUrl: "agent.html"
-	// })
-	// .state('main', {
-	// 	url: '',
-	// 	templateUrl: "main.html"
-	// })
+	.state('agent', {
+		url: "/agent",
+		templateUrl: "agent.html"
+	})
+	.state('main', {
+		url: '/',
+	})
 	// 	.state('main.hello', {
 	// 		url: "/hello",
 	// 		// templateUrl: "hello.html"
@@ -33,7 +32,7 @@ angular.module('app', [
 	// 	templateUrl: "signup.html"
 	// })
 
-// })
+})
 .run([
 	'$rootScope', 
 	'$location',
@@ -42,11 +41,12 @@ angular.module('app', [
 	function ($rootScope, $location, $document, $timeout) {
     $rootScope.$on('duScrollspy:becameActive', function($event, $element){
 		var hash = $element.prop('hash').substr(1);
-		$location.path(hash);
+		console.log('spy:active', hash)
+		// $location.hash(hash);
         ga('send', 'pageview', hash);
     });
     $rootScope.$on('duScrollspy:becameInactive', function($event, $element){
-    	// console.log('inactice')
+    	console.log('inactice')
     });
     // wait dom ready, for init route
 	var initPath = $location.path();

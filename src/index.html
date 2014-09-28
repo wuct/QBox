@@ -6,15 +6,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Qbox 提供方便、可靠的物流方案，我們的演算法可幫您節省運費達 60%。">
-    <meta name="keywords" content="Qbox, 快遞, 物流" />
+    <meta name="keywords" content="Qbox, 快遞, 物流, 即時, 共享經濟" />
     <meta name="author" content="Qbox" />
-    <meta property="og:title" content="Qbox - 順路送貨 賺取運費"/> 
+    <meta name="description" content="QBox 提供方便、可靠的即時快遞服務。到府取貨免費包裝，不用出門也能輕鬆寄。">
+    <meta property="og:description" content="QBox 提供方便、可靠的即時快遞服務。到府取貨免費包裝，不用出門也能輕鬆寄。"/>
+    <meta property="og:title" content="可靠的即時快遞服務 - Qbox"/> 
     <meta property="og:type" content="website"/> 
     <meta property="og:image" content="https://s3-ap-northeast-1.amazonaws.com/carpo-public/og_cover_customer.jpg"/> 
     <meta property="og:image" content="https://s3-ap-northeast-1.amazonaws.com/carpo-public/og_cover_agent.jpg"/> 
-    <meta property="og:site_name" content="Qbox - 順路送貨 賺取運費"/> 
-    <meta property="og:description" content="Qbox 提供方便、可靠的物流方案，我們的演算法可幫您節省運費達 60%。"/>
+    <meta property="og:site_name" content="方便可靠的即時快遞服務 - Qbox"/> 
 
     <link rel="icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon16.png">
@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" sizes="76x76"   href="/ico/apple-touch-icon-76-precomposed.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/ico/apple-touch-icon-precomposed.png">
 
-    <title>Qbox - 順路送貨 賺取運費</title>
+    <title>可靠的即時快遞服務 - Qbox"</title>
 
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
     <link href='css/app.css' rel='stylesheet' type='text/css'>
@@ -44,7 +44,6 @@
   </head>
 
   <body ng-app="app">
-
     <div class="header" dynamic-background>
       <div class="menu">
         <a class="logo item" href="#hello" du-smooth-scroll du-scrollspy>
@@ -53,16 +52,15 @@
         </a>
         <div class="right">
           <a class="item" href="#signup" du-smooth-scroll du-scrollspy>註冊</a>
-          <a class="item" href="#agent" du-smooth-scroll du-scrollspy>物流夥伴</a>
           <a class="item" href="#about" du-smooth-scroll du-scrollspy>關於</a>
+          <a class="item" ui-sref="agent" ui-sref-active="active">物流夥伴</a>
         </div>
       </div>
     </div>
 
-    <div hello>
-      <div class="hello marketingWrap">
-    
-        <div id="hello" class="pic hero" set-to-screen-height>
+    <div ui-view>
+      <div class="hello marketingWrap" id="hello">
+        <div  class="pic hero" set-to-screen-height>
           <div class="center column">
             <h1 class="logo">
               <b>Qbox</b>
@@ -152,81 +150,8 @@
         </div>
 
       </div>
-    </div>
 
-    <div agent>
-      <div class="marketingWrap agent">
-        <div id="agent" class="pic hero" set-to-screen-height>
-          <div class="center column logo">
-            <h2>
-              <b>加入 Qbox 物流</b>
-              <i class="fa fa-cube"></i>
-            </h2>
-            <h3>
-              順路送貨，賺取運費
-            </h3>
-            <a class="ui large button" href="#signupAgent" du-smooth-scroll du-scrollspy>我要加入</a>
-          </div>
-        </div>
-        <div class="ui bigMargin white grid">
-          <div class="ui center aligned column">
-            <h1 class="logo">
-              Qbox 物流夥伴
-            </h1>
-            <div class="ui horizontal bigMargin divider">
-              <i class="fa fa-bolt fa-3x"></i>
-            </div>
-            <p>
-              物流公司、個人業者或通勤族都可以成為我們的物流夥伴。<br>
-              不論您的規模與形式，都歡迎您加入 <span class="logo">Qbox</span>，接觸新市場，擴展您事業！<br>
-            </p>
 
-            <div class="ui three column stackable grid"
-              style="margin-top:3rem;">
-              <div class="center aligned column">
-                <div>
-                  <i class="fa fa-file-text-o big style"></i>
-                </div>
-                <h2>自訂條件</h2>
-                <p>您可以在任何時間接您想接的案子，條件由您決定</p>
-              </div>
-              <div class="center aligned column">
-                <div>
-                  <i class="fa fa-truck big style"></i>
-                </div>
-                <h2>不限車種</h2>
-                <p>
-                  您可以用單車、機車、轎車、貨車或其他任何您擁有交通工具
-                </p>
-              </div>
-              <div class="center aligned column">
-                <div>
-                  <i class="fa fa-dollar big style"></i>
-                </div>
-                <h2>賺取收入</h2>
-                <p>利用車上多餘空間順路送貨，彈性地賺取額外收入</p>
-              </div>
-            </div> <!-- END: three column -->
-          </div>
-        </div>
-
-        <div class="ui bigMargin grid">
-          <div class="row">
-            <div id="signupAgent" class="column">
-              <h1 class="text-center logo">
-                  加入 Qbox 物流行列
-                </h1>
-              <div class="ui horizontal divider">
-                <i class="fa fa-bolt fa-3x"></i>
-              </div>
-              <div agent-sign-up-form class="sign-up-form"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div about>
       <div class="marketingWrap about">
         <div id="about" class="pic hero" set-to-screen-height>
           <div class="center column logo">
@@ -397,32 +322,32 @@
                 </div>
                 <div class="ui divider"></div>
                 <h3 style="margin: 40px 0 20px 0;">
-            9 折
-          </h3>
+                  9 折
+                </h3>
+              </div>
+              <a class="bottom attached ui blue button"
+                href="#signupBottom" du-smooth-scroll>
+                下載 App
+              </a>
+            </div>
+          </div>
         </div>
-        <a class="bottom attached ui blue button"
-          href="#signupBottom" du-smooth-scroll du-scrollspy>
-          下載 App
-        </a>
-      </div>
-    </div>
-  </div>
 
-  <div class="ui bigMargin grid">
-    <div class="row">
-      <div id="signupBottom" class="column">
-        <h1 class="text-center">
-            現在就註冊
-          </h1>
-        <div class="ui horizontal bigMargin divider">
-          <i class="fa fa-bolt fa-3x"></i>
+        <div class="ui bigMargin grid">
+          <div class="row">
+            <div id="signupBottom" class="column">
+              <h1 class="text-center">
+                  現在就註冊
+                </h1>
+              <div class="ui horizontal bigMargin divider">
+                <i class="fa fa-bolt fa-3x"></i>
+              </div>
+              <div sign-up-form class="sign-up-form"></div>
+            </div>
+          </div>
         </div>
-        <div sign-up-form class="sign-up-form"></div>
       </div>
-    </div>
-  </div>
-</div>
-    </div>
+    </div> <!-- END: ui-view -->
 
     <div class="footer text-center">
         <div class="horizontal list">
