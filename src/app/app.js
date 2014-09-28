@@ -39,22 +39,26 @@ angular.module('app', [
 	'$document',
 	'$timeout',
 	function ($rootScope, $location, $document, $timeout) {
+
+	$rootScope.$on('$stateChangeSuccess', function(event, toState) {
+		// console.log(toState.url);
+        ga('send', 'pageview', toState.url);
+	});
     $rootScope.$on('duScrollspy:becameActive', function($event, $element){
 		var hash = $element.prop('hash').substr(1);
-		console.log('spy:active', hash)
-		// $location.hash(hash);
+		// console.log('spy:active', hash)
         ga('send', 'pageview', hash);
     });
-    $rootScope.$on('duScrollspy:becameInactive', function($event, $element){
-    	console.log('inactice')
-    });
+    // $rootScope.$on('duScrollspy:becameInactive', function($event, $element){
+    // 	console.log('inactice')
+    // });
     // wait dom ready, for init route
 	var initPath = $location.path();
-    $timeout(function() {
-    	if (['agent', 'about'].indexOf(initPath.substr(1)) === -1) return; // only scroll to this 2 page
-    	var someElement = angular.element(document.getElementById(initPath.substr(1)));
-	    $document.scrollToElement(someElement[0], 0, 600);
-    }, 500); 
+    // $timeout(function() {
+    // 	if (['agent', 'about'].indexOf(initPath.substr(1)) === -1) return; // only scroll to this 2 page
+    // 	var someElement = angular.element(document.getElementById(initPath.substr(1)));
+	   //  $document.scrollToElement(someElement[0], 0, 600);
+    // }, 500); 
 
 }])
 .factory('UserService', ['$firebase', 
