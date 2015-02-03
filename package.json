@@ -1,7 +1,24 @@
 {
   "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
+  "description": "It's a launching page with responsive design built around Angular.js, Semantic UI, Gulp and Firebase.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wuct/QBox.git"
+  },
+  "keywords": [
+    "Qbox",
+    "angular",
+    "semanticui",
+    "gulp",
+    "Firebase"
+  ],
+  "author": "wuct",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wuct/QBox/issues"
+  },
+  "homepage": "https://github.com/wuct/QBox",
   "scripts": {
     "start": "./node_modules/httpster/bin/httpster -d ./public",
     "prestart": "npm run build",
