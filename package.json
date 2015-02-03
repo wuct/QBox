@@ -3,16 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "./node_modules/httpster/bin/httpster -d ./public",
+    "prestart": "npm run build",
+    "build": "gulp default",
+    "build:watch": "parallelshell 'npm run start' 'gulp watch'",
+    "release": "gulp publish"
   },
-  "dependencies": {
-    "bluebird": "^2.3.2",
-    "ejs": "*",
-    "express": "3.3.1",
-    "json2csv": "^2.2.1",
-    "lodash": "^2.4.1",
-    "node-ses": "0.0.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.6",
     "gulp-angular-templatecache": "*",
@@ -27,6 +24,8 @@
     "gulp-rev-all": "^0.6.2",
     "gulp-rimraf": "*",
     "gulp-s3": "^0.3.0",
-    "gulp-uglify": "^0.3.1"
+    "gulp-uglify": "^0.3.1",
+    "httpster": "^1.0.1",
+    "parallelshell": "^1.0.4"
   }
 }
