@@ -19,3 +19,7 @@ Update AWS S3 and Cloudfront.
 ```
 npm run release
 ```
+
+======
+## License
+MIT
